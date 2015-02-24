@@ -62,6 +62,33 @@ body {
   max-width: 500px;
   margin: 0px auto;
 
+  .post-rank {
+    width: 130px;
+    height: 24px;
+    display: inline-block;
+  }
+
+  .star-count-1 {
+    background: url(../images/1-star-260x48.png) no-repeat 0px 0px;
+    background-size: cover;
+  }
+  .star-count-2 {
+    background: url(../images/2-stars-260x48.png) no-repeat 0px 0px;
+    background-size: cover;
+  }
+  .star-count-3 {
+    background: url(../images/3-stars-260x48.png) no-repeat 0px 0px;
+    background-size: cover;
+  }
+  .star-count-4 {
+    background: url(../images/4-stars-260x48.png) no-repeat 0px 0px;
+    background-size: cover;
+  }
+  .star-count-5 {
+    background: url(../images/5-stars-260x48.png) no-repeat 0px 0px;
+    background-size: cover;
+  }
+
   .businessinfo {
     color: rgb(170, 170, 170);
   }
@@ -69,6 +96,41 @@ body {
   .rating {
     unicode-bidi: bidi-override;
     direction: rtl;
+    /*
+    &:before {
+      content: "";
+      width: 130px;
+      height: 24px;
+      display: inline-block;
+      position: absolute;
+      z-index: 1;
+    }
+    &.star-1:before {
+      content: "";
+      background: url(../images/1-star-260x48.png) no-repeat 0px 0px;
+      background-size: cover;
+    }
+    &.star-2:before {
+      content: "";
+      background: url(../images/2-stars-260x48.png) no-repeat 0px 0px;
+      background-size: cover;
+    }
+    &.star-3:before {
+      content: "";
+      background: url(../images/3-stars-260x48.png) no-repeat 0px 0px;
+      background-size: cover;
+    }
+    &.star-4:before {
+      content: "";
+      background: url(../images/4-stars-260x48.png) no-repeat 0px 0px;
+      background-size: cover;
+    }
+    &.star-5:before {
+      content: "";
+      background: url(../images/5-stars-260x48.png) no-repeat 0px 0px;
+      background-size: cover;
+    }
+    */
     & > span  {
       display: inline-block;
       position: relative;
@@ -81,13 +143,15 @@ body {
 
     & > span:hover:before,
     & > span:hover ~ span:before {
-      content: "\2605";
+      content: "";
       background: url(../images/5-stars-260x48.png) no-repeat 0px 0px;
       background-size: cover;
       position: absolute;
-      margin-right: -15px;
-      padding: 1px 5px;
+      margin-right: -12px;
+      width: 24px;
+      height: 24px;
     }
+
   }
   form {
     input {
@@ -126,26 +190,6 @@ body {
         height: 24px;
         display:block;
         margin:5px 0px;
-      }
-      .star-count-1 {
-        background: url(../images/1-star-260x48.png) no-repeat 0px 0px;
-        background-size: cover;
-      }
-      .star-count-2 {
-        background: url(../images/2-stars-260x48.png) no-repeat 0px 0px;
-        background-size: cover;
-      }
-      .star-count-3 {
-        background: url(../images/3-stars-260x48.png) no-repeat 0px 0px;
-        background-size: cover;
-      }
-      .star-count-4 {
-        background: url(../images/4-stars-260x48.png) no-repeat 0px 0px;
-        background-size: cover;
-      }
-      .star-count-5 {
-        background: url(../images/5-stars-260x48.png) no-repeat 0px 0px;
-        background-size: cover;
       }
 
     }
