@@ -61,15 +61,15 @@ angular.module('trustpilotWidgetApp')
 
     for (var i = 0; i < reviews.length; i++) {
       reviews[i].time = Math.floor((Math.random() * 50) + 1);
-
     }
 
     $scope.reviews = reviews;
-    console.dir($scope.reviews);
 
     $scope.addReview = function(post) {
-      console.dir(post);
       $scope.reviews.unshift(post);
-      console.dir($scope.reviews);
+    };
+
+    $scope.rank = function(starRating) {
+      $scope.post.starRating = starRating;
     };
   });

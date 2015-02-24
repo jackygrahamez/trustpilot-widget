@@ -17,7 +17,10 @@ body {
   font-size: 80%;
   color: #ccc;
   margin-top: 8px;
-  float: right;
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .header,
@@ -118,28 +121,29 @@ body {
         text-align:left;
       }
       .rating {
-        width: 260px;
-        height: 48px;
-        display:inline-block;
+        width: 130px;
+        height: 24px;
+        display:block;
+        margin:5px 0px;
       }
-      .star-1 {
-        background: url(../images/1-star-260x48.png) no-repeat -53px 0px;
+      .star-count-1 {
+        background: url(../images/1-star-260x48.png) no-repeat 0px 0px;
         background-size: cover;
       }
-      .star-2 {
-        background: url(../images/2-star-260x48.png) no-repeat -53px 0px;
+      .star-count-2 {
+        background: url(../images/2-stars-260x48.png) no-repeat 0px 0px;
         background-size: cover;
       }
-      .star-3 {
-        background: url(../images/3-star-260x48.png) no-repeat -53px 0px;
+      .star-count-3 {
+        background: url(../images/3-stars-260x48.png) no-repeat 0px 0px;
         background-size: cover;
       }
-      .star-4 {
-        background: url(../images/4-star-260x48.png) no-repeat -53px 0px;
+      .star-count-4 {
+        background: url(../images/4-stars-260x48.png) no-repeat 0px 0px;
         background-size: cover;
       }
-      .star-5 {
-        background: url(../images/5-star-260x48.png) no-repeat -53px 0px;
+      .star-count-5 {
+        background: url(../images/5-stars-260x48.png) no-repeat 0px 0px;
         background-size: cover;
       }
 

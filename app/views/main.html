@@ -6,7 +6,7 @@
     </p>
 
     <div class="rating">
-      <span data-ng-repeat="star in stars | reverse"></span>
+      <span data-ng-repeat="starRating in stars | reverse" ng-click="rank(starRating)"></span>
     </div>
     <p><strong>{{post.reviewTitle}}</strong></p>
     <p data-ng-bind="post.reviewBody"></p>
@@ -22,14 +22,11 @@
     <button type="button btn" ng-click="addReview(post)">Submit</button>
   </form>
   <div class="review-section">
-    <div class="review" data-ng-repeat="review in reviews | limitTo:quantity | orderBy:time">
+    <div class="review" data-ng-repeat="review in reviews | limitTo:quantity | orderBy: 'time' ">
       <p>{{review.firstName + ' '+review.lastName}}</p>
-      <p>
-        <div class="rating star-{{review.starRating}}" ng-class=""></div>
-        <span class="data">
-          <span data-ng-bind="review.time"></span> hrs ago
-        </span>
-      </p>
+      <div class="rating star-count-{{review.starRating}}" ng-class=""></div>
+        <span class="data">{{review.time}} hrs ago</span>
+
       <p><strong>{{review.reviewTitle | characters:25 }}</strong></p>
       <p>{{review.reviewBody | characters:25}}</p>
     </div>
