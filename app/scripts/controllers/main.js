@@ -70,6 +70,9 @@ angular.module('trustpilotWidgetApp')
     };
 
     $scope.rank = function(starRating) {
+      console.log(starRating);
+      $scope.post = {};
+      //$scope.post.starRating = 0;
       $scope.post.starRating = starRating;
     };
   });

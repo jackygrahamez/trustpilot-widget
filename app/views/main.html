@@ -5,8 +5,8 @@
       <img src="images/trustpilot-logo-light-bg-120x18.png" alt="Trustpilot">
     </p>
 
-    <div class="rating">
-      <span data-ng-repeat="starRating in stars | reverse" ng-click="rank(starRating)"></span>
+    <div ng-model="post" class="rating ranking-{{post.starRating}}">
+      <span ng-model="post" data-ng-repeat="starRating in stars | reverse" ng-click="rank(starRating)"></span>
     </div>
     <p><strong>{{post.reviewTitle}}</strong></p>
     <p data-ng-bind="post.reviewBody"></p>
@@ -21,7 +21,7 @@
     <br /><br />
     <button type="button btn" ng-click="addReview(post)">Submit</button>
   </form>
-  <div class="review-section">
+  <div ng-hide="post" class="review-section">
     <div class="review" data-ng-repeat="review in reviews | limitTo:quantity | orderBy: 'time' ">
       <p>{{review.firstName + ' '+review.lastName}}</p>
       <div class="rating star-count-{{review.starRating}}" ng-class=""></div>
