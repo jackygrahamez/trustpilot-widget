@@ -1,18 +1,21 @@
 <div class="jumbotron">
-  <p class="lead">
-    <p>
-      <span class="businessinfo">{{reviews.length}} reviews of</span>
-      <img src="images/trustpilot-logo-light-bg-120x18.png" alt="Trustpilot">
-    </p>
+      <p>
+        <span class="businessinfo">{{reviews.length}} reviews of</span>
+        <img src="images/trustpilot-logo-light-bg-120x18.png" alt="Trustpilot">
+      </p>
+      <p data-ng-show="post.starRating" data-ng-hide="post">Rank this company</p>
+      <div data-ng-hide="post.starRating" ng-model="post" class="rating ranking-{{post.starRating}}">
+        <span data-ng-hide="{{post.starRating}}" ng-model="post" data-ng-repeat="starRating in stars | reverse" ng-click="rank(starRating)"></span>
+      </div>
+    <div class="container">
 
-    <div data-ng-hide="post.starRating" ng-model="post" class="rating ranking-{{post.starRating}}">
-      <span data-ng-hide="{{post.starRating}}" ng-model="post" data-ng-repeat="starRating in stars | reverse" ng-click="rank(starRating)"></span>
+      <div data-ng-show="post.starRating" class="post-rank star-count-{{post.starRating}}"></div>
+      <p><strong>{{post.reviewTitle}}</strong></p>
+      <p data-ng-bind="post.reviewBody"></p>
+      <p>{{post.firstName+' '+post.lastName}}</p>
+      <p data-ng-bind="post.location"></p>
+
     </div>
-    <div data-ng-show="post.starRating" class="post-rank star-count-{{post.starRating}}"></div>
-    <p><strong>{{post.reviewTitle}}</strong></p>
-    <p data-ng-bind="post.reviewBody"></p>
-
-  <p data-ng-show="post.starRating" data-ng-hide="post">Enter your own review</p>
   <form>
     <textarea data-ng-show="post.starRating" rows="1" placeholder="Your Review" type="text" name="title" novalidate data-ng-model="post.reviewTitle"></textarea>
     <textarea data-ng-show="post.reviewTitle" placeholder="Review" novalidate data-ng-model="post.reviewBody"></textarea>
@@ -26,9 +29,10 @@
     <div class="review" data-ng-repeat="review in reviews | limitTo:quantity | orderBy: 'seconds' ">
       <p>{{review.firstName + ' '+review.lastName}}</p>
       <div class="rating star-count-{{review.starRating}}" ng-class=""></div>
-        <span class="data">{{review.displayTime}}</span>
-      <p><strong>{{review.reviewTitle | characters:25 }}</strong></p>
-      <p>{{review.reviewBody | characters:25}}</p>
+        <span class="data">{{review.displayTime}}<br />{{review.displayLocation}}</span>
+      <p><strong>{{review.reviewTitle | characters:60 }}</strong></p>
+      <p>{{review.reviewBody | characters:100}}</p>
+
     </div>
   </div>
 

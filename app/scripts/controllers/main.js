@@ -58,37 +58,52 @@ angular.module('trustpilotWidgetApp')
         },
     ];
 
+    var updateReviews = function (reviews) {
+      for (var i = 0; i < reviews.length; i++) {
 
-    for (var i = 0; i < reviews.length; i++) {
-      var t1 = new Date();
-      var t0 = new Date( Math.floor(t1.getTime() - ((Math.random() * 9999999)+10000000)) );
+          var t1 = new Date();
+          if (!reviews[i].timeStamp) {
+            var t0 = new Date( Math.floor(t1.getTime() - ((Math.random() * 9999999)+10000000)) );
+          } else {
+            var t0 = new Date(reviews[i].timeStamp);
+          }
+          reviews[i].seconds = Math.floor((t1.getTime() - t0.getTime())/1000);
+          reviews[i].minutes = Math.floor(((t1.getTime() - t0.getTime())/1000)/60);
+          reviews[i].hours = Math.floor((((t1.getTime() - t0.getTime())/1000)/60)/60);
+          reviews[i].displayTime = reviews[i].hours + ' hrs ago';
+          reviews[i].timeStamp = t0.getTime();
+          if (reviews[i].hours <= 0) {
+            reviews[i].displayTime = reviews[i].minutes + ' min ago';
+          }
+          if (reviews[i].minutes <= 0) {
+            reviews[i].displayTime = reviews[i].seconds + ' sec ago';
+          }
 
-      reviews[i].seconds = Math.floor((t1.getTime() - t0.getTime())/1000);
-      reviews[i].minutes = Math.floor(((t1.getTime() - t0.getTime())/1000)/60);
-      reviews[i].hours = Math.floor((((t1.getTime() - t0.getTime())/1000)/60)/60);
-      reviews[i].displayTime = reviews[i].hours + ' hrs ago';
+          if (reviews[i].location) {
+            reviews[i].displayLocation = 'at '+reviews[i].location;
+          } else {
+            reviews[i].displayLocation = '';
+          }
 
-      if (reviews[i].hours <= 0) {
-        reviews[i].displayTime = reviews[i].minutes + ' min ago';
+
       }
-      if (reviews[i].minutes <= 0) {
-        reviews[i].displayTime = reviews[i].seconds + ' sec ago';
-      }
-
     }
+
 
     $scope.reviews = reviews;
 
     $scope.addReview = function(post) {
-      console.dir(post);
+      //console.dir(post);
       if (post) {
         var t1 = new Date();
-        var t0 = new Date( Math.floor(t1.getTime() - ((Math.random() * 9999999))) );
+        var t0 = new Date( Math.floor(t1.getTime() - 1000));
 
         post.seconds = Math.floor((t1.getTime() - t0.getTime())/1000);
         post.minutes = Math.floor(((t1.getTime() - t0.getTime())/1000)/60);
         post.hours = Math.floor((((t1.getTime() - t0.getTime())/1000)/60)/60);
         post.displayTime = post.hours + ' hrs ago';
+        post.timeStamp = t1.getTime() - 1000;
+
         if (post.hours <= 0) {
           post.displayTime = post.minutes + ' min ago';
         }
@@ -96,16 +111,25 @@ angular.module('trustpilotWidgetApp')
           post.displayTime = post.seconds + ' sec ago';
         }
 
+        if (post.location) {
+          post.displayLocation = 'at '+post.location;
+        } else {
+          post.displayLocation = '';
+        }
+
         $scope.reviews.unshift(post);
-        console.dir($scope.reviews);
+        //console.dir($scope.reviews);
         $scope.post = $scope.initial;
       }
+      updateReviews($scope.reviews);
     };
 
     $scope.rank = function(starRating) {
-      console.log(starRating);
+      //console.log(starRating);
       $scope.initial = $scope.post;
       $scope.post = {};
       $scope.post.starRating = starRating;
     };
+
+    updateReviews(reviews);
   });
