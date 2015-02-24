@@ -1,0 +1,38 @@
+<div class="jumbotron">
+  <p class="lead">
+    <p>
+      <span class="businessinfo">{{reviews.length}} reviews of</span>
+      <img src="images/trustpilot-logo-light-bg-120x18.png" alt="Trustpilot">
+    </p>
+
+    <div class="rating">
+      <span data-ng-repeat="star in stars | reverse"></span>
+    </div>
+    <p><strong>{{post.reviewTitle}}</strong></p>
+    <p data-ng-bind="post.reviewBody"></p>
+
+  <p data-ng-hide="post">Enter your own review</p>
+  <form>
+    <textarea rows="1" placeholder="Your Review" type="text" name="title" data-ng-model="post.reviewTitle"></textarea>
+    <textarea data-ng-show="post.reviewTitle" placeholder="Review" novalidate data-ng-model="post.reviewBody"></textarea>
+    <textarea data-ng-show="post.reviewBody" rows="1" placeholder="Firstname" novalidate data-ng-model="post.firstName"></textarea>
+    <textarea data-ng-show="post.firstName" rows="1" placeholder="Lastname" novalidate data-ng-model="post.lastName"></textarea>
+    <textarea data-ng-show="post.lastName" rows="1" placeholder="Location" novalidate data-ng-model="post.location"></textarea>
+    <br /><br />
+    <button type="button btn" ng-click="addReview(post)">Submit</button>
+  </form>
+  <div class="review-section">
+    <div class="review" data-ng-repeat="review in reviews | limitTo:quantity | orderBy:time">
+      <p>{{review.firstName + ' '+review.lastName}}</p>
+      <p>
+        <div class="rating star-{{review.starRating}}" ng-class=""></div>
+        <span class="data">
+          <span data-ng-bind="review.time"></span> hrs ago
+        </span>
+      </p>
+      <p><strong>{{review.reviewTitle | characters:25 }}</strong></p>
+      <p>{{review.reviewBody | characters:25}}</p>
+    </div>
+  </div>
+
+</div>
