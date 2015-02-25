@@ -1,5 +1,9 @@
 # trustpilot-widget
 
+See demo http://jackygrahamez.github.io/widget-example/demo/
+
+See project page http://jackygrahamez.github.io/widget-example/
+
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.11.1.
 
