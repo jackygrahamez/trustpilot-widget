@@ -9,7 +9,7 @@
  */
 angular.module('trustpilotWidgetApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.quantity = 10;
+    //$scope.quantity = 10;
     var reviews = [
         {
         	'firstName':'Simon',

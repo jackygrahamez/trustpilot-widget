@@ -26,7 +26,7 @@
     <button data-ng-show="post.starRating" type="button btn" ng-click="addReview(post)">Submit</button>
   </form>
   <div ng-hide="post" class="review-section">
-    <div class="review" data-ng-repeat="review in reviews | limitTo:quantity | orderBy: 'seconds' ">
+    <div class="review" data-ng-repeat="review in reviews | orderBy: 'seconds' ">
       <p>{{review.firstName + ' '+review.lastName}}</p>
       <div class="rating star-count-{{review.starRating}}" ng-class=""></div>
         <span class="data">{{review.displayTime}}<br />{{review.displayLocation}}</span>
