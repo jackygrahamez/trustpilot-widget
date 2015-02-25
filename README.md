@@ -9,6 +9,12 @@ version 0.11.1.
 
 ## Build & development
 
+**You will need node, bower, compass and possibly other dependencies.**
+
+After cloning run `npm install` then `bower update`.
+
+If no errors then the following should work.
+
 Run `grunt` for building and `grunt serve` for preview.
 
 ## Testing
